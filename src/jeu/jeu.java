@@ -4,8 +4,16 @@ package jeu;
  * Auteurs : Tous le monde
  * */
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import placeur.humainPlaceur;
+import placeur.ordiPlaceur;
 import placeur.placeur;
 import devineur.devineur;
+import devineur.humainDevineur;
+import devineur.ordiDevineur;
 
 public class jeu{
 	//les atributs de classes
@@ -15,8 +23,29 @@ public class jeu{
 	
 	
 	public jeu (/*les parametre*/){
-		//inntialiser les paramatre
-		//faire le "placeur placer les boules
+		Properties prop = new Properties();
+		 
+    	try {
+               //load a properties file
+    		prop.load(new FileInputStream("config.txt"));
+ 
+            //placeur
+            if( prop.getProperty("placeur") == "ordi")
+            	placeur=new ordiPlaceur();
+            else
+            	placeur=new humainPlaceur();
+            
+            //devineur
+    		if (prop.getProperty("devineur")=="ordi")
+    			devineur=new ordiDevineur();
+    		else 
+    			devineur=new humainDevineur();
+            
+            /* etc */
+ 
+    	} catch (IOException ex) {
+    		ex.printStackTrace();
+        }
 	}
 		
 	

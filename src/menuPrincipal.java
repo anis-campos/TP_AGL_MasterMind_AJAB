@@ -2,6 +2,8 @@
  * 
  * menuPrincipal.java est la classe comportant le main qui lancera l'exécution du programme et affichera le menu et les options*/
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -50,6 +52,22 @@ public class menuPrincipal{
 
 	static void options(){
 		System.out.println("coucou");
+		
+		Properties prop = new Properties();
+		 
+    	try {
+    		//set the properties value
+    		prop.setProperty("database", "localhost");
+    		prop.setProperty("dbuser", "mkyong");
+    		prop.setProperty("dbpassword", "password");
+ 
+    		//save properties to project root folder
+    		prop.store(new FileOutputStream("config.txt"), null);
+ 
+    	} catch (IOException ex) {
+    		ex.printStackTrace();
+        }
+    
 		clear();
 	}
 
