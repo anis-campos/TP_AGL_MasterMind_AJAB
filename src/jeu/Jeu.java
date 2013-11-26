@@ -8,43 +8,45 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import placeur.humainPlaceur;
-import placeur.ordiPlaceur;
-import placeur.placeur;
-import devineur.devineur;
-import devineur.humainDevineur;
-import devineur.ordiDevineur;
+import placeur.HumainPlaceur;
+import placeur.OrdiPlaceur;
+import placeur.Placeur;
+import devineur.Devineur;
+import devineur.HumainDevineur;
+import devineur.OrdiDevineur;
 
-public class jeu{
+public class Jeu{
 	//les atributs de classes
-	devineur devineur;
-	placeur placeur;
+	Devineur devineur;
+	Placeur placeur;
 	
+	Boule []tableauBoule;
 	
-	
-	public jeu (/*les parametre*/){
+	public Jeu (/*les parametre*/){
 		Properties prop = new Properties();
 		 
     	try {
                //load a properties file
-    		prop.load(new FileInputStream("config.txt"));
+    		prop.load(new FileInputStream("src/config.txt"));
  
             //placeur
             if( prop.getProperty("placeur") == "ordi")
-            	placeur=new ordiPlaceur();
+            	placeur=new OrdiPlaceur();
             else
-            	placeur=new humainPlaceur();
+            	placeur=new HumainPlaceur();
             
             //devineur
     		if (prop.getProperty("devineur")=="ordi")
-    			devineur=new ordiDevineur();
+    			devineur=new OrdiDevineur();
     		else 
-    			devineur=new humainDevineur();
+    			devineur=new HumainDevineur();
             
+    		int nbBoule = Integer.parseInt(prop.getProperty("nbBoule"));
+    		tableauBoule=new Boule[nbBoule];
             /* etc */
  
     	} catch (IOException ex) {
-    		ex.printStackTrace();
+    		System.out.println("Erreure - Impossible de lire le fichier \"src//config.txt\" !!");;
         }
 	}
 		

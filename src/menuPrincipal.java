@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
+import jeu.Jeu;
+
 
 public class menuPrincipal{
 
@@ -35,6 +37,8 @@ public class menuPrincipal{
 				case 0:
 					System.out.println("Programme terminé !! ");
 				case 1 :
+					Jeu jeu = new Jeu();
+					jeu.run();
 					break;
 				case 2 :
 					options();
@@ -57,12 +61,13 @@ public class menuPrincipal{
 		 
     	try {
     		//set the properties value
+    		
     		prop.setProperty("database", "localhost");
     		prop.setProperty("dbuser", "mkyong");
     		prop.setProperty("dbpassword", "password");
  
     		//save properties to project root folder
-    		prop.store(new FileOutputStream("config.txt"), null);
+    		prop.store(new FileOutputStream("src/config.txt"), null);
  
     	} catch (IOException ex) {
     		ex.printStackTrace();

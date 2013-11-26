@@ -1,6 +1,6 @@
 package jeu;
 
-public class boule {
+public class Boule {
 
 	//definition des couleurs
 	static enum Couleurs {
@@ -14,12 +14,12 @@ public class boule {
 	
 	Couleurs couleur;
 	
-	public boule ()
+	public Boule ()
 	{
 		this(couleurHasard());
 	}
 	
-	public boule (Couleurs coul)
+	public Boule (Couleurs coul)
 	{
 		this.couleur=coul;
 	}

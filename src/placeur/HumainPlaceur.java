@@ -2,14 +2,14 @@ package placeur;
 
 import java.util.Vector;
 
-import jeu.boule;
+import jeu.Boule;
 
 
 
-public class humainPlaceur implements placeur {
+public class HumainPlaceur implements Placeur {
 
 	@Override
-	public void placer(Vector<boule> listBoule) {
+	public void placer(Vector<Boule> listBoule) {
 		// TODO Auto-generated method stub
 		
 	}
