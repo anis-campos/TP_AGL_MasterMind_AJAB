@@ -16,7 +16,7 @@ public class jeu{
 	
 	public jeu (/*les parametre*/){
 		//inntialiser les paramatre
-		//faire le "placeur placer les boule
+		//faire le "placeur placer les boules
 	}
 		
 	
@@ -27,10 +27,10 @@ public class jeu{
 			//incrementer "nbessai"
 			
 			//on teste le resultat
-				//si cest faux
+				//si c'est faux
 					// on lui dit les pions
-				//si cest juste "fin"= true
-			//fin de teste
+				//si c'est juste "fin"= true
+			//fin de test
 		//fin de boucle
 		}
 	

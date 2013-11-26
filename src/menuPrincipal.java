@@ -11,10 +11,15 @@ public class menuPrincipal{
 
 	public static void main(String[] args) {
 		int menu = -1;
+		String menuString;
 		sc = new Scanner(System.in);
 		while (menu != 0){
-			System.out.println("MENU MASTERMIND\n\n1. Jouer au Master Mind\n2. Options\nChoix : ");
-			menu = Integer.parseInt(sc.nextLine());
+			System.out.println("MENU MASTERMIND\n\n0. Quitter\n1. Jouer au Master Mind\n2. Options\nChoix : ");
+			menuString = sc.nextLine();
+			try{
+				menu = Integer.decode(menuString);
+			}
+			catch(NumberFormatException e){e.getMessage();}
 			while(menu < 1 || menu > 2){
 				System.out.println("MENU MASTERMIND\n\n1. Jouer au Master Mind\n2. Options\nChoix : ");
 				menu = Integer.parseInt(sc.nextLine());
@@ -32,17 +37,18 @@ public class menuPrincipal{
 	
 	
 	public static void options(){
-		clear();
 		System.out.println("coucou");
+		clear();
 	}
 	
 	public static void clear(){
 		try{
-			 Runtime.getRuntime().exec("cls");
+			Runtime.getRuntime().exec("clear") ;
+			System.out.println("");
 		}
-	    catch(Exception e){
-	       System.out.println("Erreur lors de l'effacement de l'écran.");
-	    }
+		catch(Exception e){
+			e.getMessage();
+		};
 	}
 		
 
