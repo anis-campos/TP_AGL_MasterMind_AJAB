@@ -7,51 +7,59 @@ import java.util.*;
 
 public class menuPrincipal{
 
-	private static Scanner sc;
 
 	public static void main(String[] args) {
 		int menu = -1;
 		String menuString;
-		sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		while (menu != 0){
-			System.out.println("MENU MASTERMIND\n\n0. Quitter\n1. Jouer au Master Mind\n2. Options\nChoix : ");
-			menuString = sc.nextLine();
-			try{
-				menu = Integer.decode(menuString);
-			}
-			catch(NumberFormatException e){e.getMessage();}
-			while(menu < 1 || menu > 2){
-				System.out.println("MENU MASTERMIND\n\n1. Jouer au Master Mind\n2. Options\nChoix : ");
-				menu = Integer.parseInt(sc.nextLine());
-			}
-			
+			do {
+				System.out.println("\n	    -----------------  Menu MasterMind   --------------- ");
+				System.out.println("	   |	1 : jouer                                       |");
+				System.out.println("	   |	2 : option                                      |");
+				System.out.println("	    ---------------------------------------------------- ");
+				System.out.println("	   |	0 : Terminer                                    |");
+				System.out.println("	    ---------------------------------------------------- ");
+				System.out.println("\nVeuillez saisir votre commande : ");
+
+				menuString = sc.nextLine();
+				try{
+					menu = Integer.decode(menuString);
+				}
+				catch(NumberFormatException e){e.getMessage();}
+			}while(menu < 0 || menu > 2);
+
 			switch(menu){
+				case 0:
+					System.out.println("Programme terminé !! ");
 				case 1 :
 					break;
 				case 2 :
 					options();
 					break;
+				default :
+					break;
 			}
+
+			clear();
 		}
+		sc.close();
+
 	}
-	
-	
-	public static void options(){
+
+
+	static void options(){
 		System.out.println("coucou");
 		clear();
 	}
-	
-	public static void clear(){
-		try{
-			Runtime.getRuntime().exec("clear") ;
-			System.out.println("");
-		}
-		catch(Exception e){
-			e.getMessage();
-		};
-	}
-		
 
-	
+	static void clear()
+	{
+		for (int i=0;i<15;i++)
+			System.out.print("\n");
+	}
+
+
+
 
 }

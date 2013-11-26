@@ -8,7 +8,7 @@ import jeu.boule;
 public class ordiDevineur  implements devineur {
 
 	@Override
-	public void placer(Vector<boule> listBoule) {
+	public void proposer(Vector<boule> listBoule) {
 		// TODO Auto-generated method stub
 		
 	}
