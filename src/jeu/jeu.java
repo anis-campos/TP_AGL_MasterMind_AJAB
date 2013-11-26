@@ -1,3 +1,4 @@
+package jeu;
 /* Classe qui gere la boucle de jeu
  * 
  * Auteurs : Tous le monde
@@ -6,13 +7,14 @@
 import placeur.placeur;
 import devineur.devineur;
 
-public class Jeu{
+public class jeu{
 	//les atributs de classes
 	devineur devineur;
 	placeur placeur;
 	
 	
-	public Jeu (/*les parametre*/){
+	
+	public jeu (/*les parametre*/){
 		//inntialiser les paramatre
 		//faire le "placeur placer les boule
 	}
