@@ -1,2 +1,2 @@
-TP_AGL_MasterMind_AJAB
-======================
+TP de AGL : MasterMind
+=======================

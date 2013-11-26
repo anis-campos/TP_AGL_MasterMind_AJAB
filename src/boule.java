@@ -1,16 +1,18 @@
 
 public class boule {
-	
+
+	//definition des couleurs
 	static enum Couleurs {
 		Rose,
 		Bleu,
 		Vert,
 		Jaune,
 		Violet,
-		Orange,	
+		Orange;	
 	}
 	
 	Couleurs couleur;
+	
 	public boule ()
 	{
 		this(couleurHasard());
@@ -21,6 +23,7 @@ public class boule {
 		this.couleur=coul;
 	}
 	
+	//renvoie une couleur au hasard
 	static Couleurs couleurHasard ()
 	{
 		Couleurs coul;
@@ -28,5 +31,10 @@ public class boule {
 		return coul ;
 		
 	}
+	
+	public String toString (){
+		return "La couleur de la boule est : "+this.couleur;
+	}
+	
 	
 }

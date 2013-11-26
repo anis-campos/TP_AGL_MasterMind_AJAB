@@ -1,10 +1,15 @@
+import joueur.*;
+
 /* Classe qui gere la boucle de jeu
  * 
  * Auteurs : Tous le monde
  * */
 public class Jeu{
 	//les atributs de classes
-		
+	devineur devineur;
+	placeur placeur;
+	
+	
 	public Jeu (/*les parametre*/){
 		//inntialiser les paramatre
 		//faire le "placeur placer les boule
