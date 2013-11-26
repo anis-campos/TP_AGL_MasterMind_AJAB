@@ -1,4 +1,4 @@
-package joueur;
+package placeur;
 
 public  abstract  interface placeur {
 

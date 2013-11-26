@@ -1,4 +1,4 @@
-package joueur;
+package devineur;
 
 public  abstract  interface devineur {
 

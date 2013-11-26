@@ -1,5 +1,4 @@
-package humain;
-import joueur.devineur;
+package devineur;
 
 
 

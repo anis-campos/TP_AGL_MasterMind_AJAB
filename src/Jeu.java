@@ -1,9 +1,11 @@
-import joueur.*;
-
 /* Classe qui gere la boucle de jeu
  * 
  * Auteurs : Tous le monde
  * */
+
+import placeur.placeur;
+import devineur.devineur;
+
 public class Jeu{
 	//les atributs de classes
 	devineur devineur;

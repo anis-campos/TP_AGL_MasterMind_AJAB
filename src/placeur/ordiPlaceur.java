@@ -1,5 +1,4 @@
-package ordi;
-import joueur.placeur;
+package placeur;
 
 
 public class ordiPlaceur   implements placeur {

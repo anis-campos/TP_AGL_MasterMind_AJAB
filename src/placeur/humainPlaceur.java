@@ -1,6 +1,5 @@
-package humain;
+package placeur;
 
-import joueur.placeur;
 
 
 public class humainPlaceur implements placeur {

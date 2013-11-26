@@ -1,5 +1,4 @@
-package ordi;
-import joueur.devineur;
+package devineur;
 
 
 public class ordiDevineur  implements devineur {
