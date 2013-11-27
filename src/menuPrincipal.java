@@ -29,13 +29,14 @@ public class menuPrincipal{
 				System.out.println("\n	    -----------------  Menu MasterMind   --------------- ");
 				System.out.println("	   |	1 : Jouer                                       |");
 				System.out.println("	   |	2 : Options                                     |");
+				System.out.println("	   |	3 : Crédits                                     |");
 				System.out.println("	    ---------------------------------------------------- ");
 				System.out.println("	   |	0 : Quitter	                                |");
 				System.out.println("	    ---------------------------------------------------- ");
 				System.out.println("\nVeuillez saisir votre commande : ");
 
 				menu = scanfInt(sc);
-			}while(menu<0 || menu>2);
+			}while(menu<0 || menu>3);
 
 			switch(menu){
 				case 0:
@@ -53,16 +54,16 @@ public class menuPrincipal{
 							do{
 								clear();
 								System.out.println("\n	    ----------------  Options MasterMind   ------------- ");
-								System.out.println("	   |	1 : Mode de jeu :                               |");
+								System.out.println("	   |  	1 : Mode de jeu :                               |");
+								System.out.print("           |         -> Placeur : " + prop.getProperty("placeur") + "                        ");
 								if(prop.getProperty("placeur").compareTo("Ordi") == 0)
-									System.out.println("           |         -> Placeur : " + prop.getProperty("placeur") + "                             |");
-								else
-									System.out.println("           |         -> Placeur : " + prop.getProperty("placeur") + "                         |");
-								if(prop.getProperty("placeur").compareTo("Ordi") == 0)
-									System.out.println("           |         -> Devineur : " + prop.getProperty("devineur") + "                           |");
-								else
-									System.out.println("           |         -> Devineur : " + prop.getProperty("devineur") + "                       |");
-								System.out.println("	   |	2 : Nombre de boules : " + prop.getProperty("nbBoules") +"                         |");
+									System.out.print("  ");
+								System.out.println("|");
+								System.out.print("           |         -> Devineur : " + prop.getProperty("devineur") + "                       ");
+								if(prop.getProperty("devineur").compareTo("Ordi") == 0)
+									System.out.print("  ");
+								System.out.println("|");
+								System.out.println("	   |	2 : Nombre de boules : " + prop.getProperty("nbBoules") +"                        |");
 								System.out.println("	   |	3 : Sauvegarder les modifications               |");
 								System.out.println("	    ---------------------------------------------------- ");
 								System.out.println("	   |	0 : Retour                                      |");
@@ -137,6 +138,16 @@ public class menuPrincipal{
 					catch (IOException ex) {ex.printStackTrace();}
 					menu = -1;
 					break;
+				case 3 :
+					clear();
+					System.out.println("Créateur : Antoine Bouquet, Anis Da Silva Campos, Julien Raton, Benoit Rongeard");
+					System.out.println("\nCopyright © - Tous droits réservés");
+					System.out.println("parce que c'est classe de mettre ça quand même.");
+					try{
+						Thread.sleep(6000);
+					}
+					catch(InterruptedException e){e.getMessage();}
+					break;
 				default :
 					break;
 			}
@@ -148,7 +159,7 @@ public class menuPrincipal{
 
 	static void clear()
 	{
-		for (int i=0;i<15;i++)
+		for (int i=0;i<20;i++)
 			System.out.print("\n");
 	}
 

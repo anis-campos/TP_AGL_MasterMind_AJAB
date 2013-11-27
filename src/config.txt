@@ -1,4 +1,4 @@
-#Wed Nov 27 12:01:21 CET 2013
-placeur=Humain
+#Wed Nov 27 14:27:02 CET 2013
+placeur=Ordi
 devineur=Ordi
 nbBoules=3
