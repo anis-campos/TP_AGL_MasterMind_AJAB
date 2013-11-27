@@ -19,13 +19,15 @@ public class Jeu{
 	//les atributs de classes
 	Devineur devineur;
 	Placeur placeur;
-	
+	int nbBoule;
 	Boule []tableauBoule;
 	
 	public Jeu (/*les parametre*/){
 		Properties prop = new Properties();
 		 
     	try {
+    		this.nbBoule = Integer.parseInt(prop.getProperty("nbBoule"));
+    		tableauBoule=new Boule[nbBoule];
                //load a properties file
     		prop.load(new FileInputStream("src/config.txt"));
  
@@ -36,13 +38,13 @@ public class Jeu{
             	placeur=new HumainPlaceur();
             
             //devineur
+            
     		if (prop.getProperty("devineur")=="ordi")
-    			devineur=new OrdiDevineur();
+    			devineur=new OrdiDevineur(nbBoule);		//attention
     		else 
     			devineur=new HumainDevineur();
             
-    		int nbBoule = Integer.parseInt(prop.getProperty("nbBoule"));
-    		tableauBoule=new Boule[nbBoule];
+    		
             /* etc */
  
     	} catch (IOException ex) {

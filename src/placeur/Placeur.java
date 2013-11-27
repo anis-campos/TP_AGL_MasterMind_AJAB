@@ -1,10 +1,8 @@
 package placeur;
 
-
-import java.util.Vector;
-import jeu.Boule;;
+import jeu.Boule;
 
 public  abstract  interface Placeur {
-	public void placer(Vector<Boule> listBoule);
-	public void lirePions();
+	public void placer(Boule []tabBoule);
+	
 }

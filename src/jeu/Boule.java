@@ -3,7 +3,7 @@ package jeu;
 public class Boule {
 
 	//definition des couleurs
-	static enum Couleurs {
+	public static enum Couleurs {
 		Rose,
 		Bleu,
 		Vert,
@@ -12,8 +12,12 @@ public class Boule {
 		Orange;	
 	}
 	
-	Couleurs couleur;
+	private Couleurs couleur;
 	
+	public Couleurs getCouleur() {
+		return couleur;
+	}
+
 	public Boule ()
 	{
 		this(couleurHasard());

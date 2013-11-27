@@ -1,7 +1,5 @@
 package devineur;
 
-import java.util.Vector;
-
 import jeu.Boule;
 
 
@@ -9,9 +7,17 @@ import jeu.Boule;
 public class HumainDevineur   implements Devineur {
 
 	@Override
-	public void proposer(Vector<Boule> listBoule) {
+	public void proposer(Boule []tabBoule) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void lirePions(Boule[] tabBoule, int nbPionBlanc, int nbPionRouge) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
