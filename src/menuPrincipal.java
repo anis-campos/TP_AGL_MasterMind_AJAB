@@ -2,6 +2,7 @@
  * 
  * menuPrincipal.java est la classe comportant le main qui lancera l'exécution du programme et affichera le menu et les options*/
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
@@ -10,28 +11,31 @@ import jeu.Jeu;
 
 
 public class menuPrincipal{
-
-
+	
+	private static Properties prop = new Properties();
+	
+	
 	public static void main(String[] args) {
-		int menu = -1;
-		String menuString;
+		
+		//Ces deux valeurs représentes des valeurs récupérer par le scanf(), utilisés pour les modifications d'options
+		String valeurString;
+		int valeurInt;
+		//
 		Scanner sc = new Scanner(System.in);
+		int menu = -1;
 		while (menu != 0){
 			do {
+				clear();
 				System.out.println("\n	    -----------------  Menu MasterMind   --------------- ");
-				System.out.println("	   |	1 : jouer                                       |");
-				System.out.println("	   |	2 : option                                      |");
+				System.out.println("	   |	1 : Jouer                                       |");
+				System.out.println("	   |	2 : Options                                     |");
 				System.out.println("	    ---------------------------------------------------- ");
-				System.out.println("	   |	0 : Terminer                                    |");
+				System.out.println("	   |	0 : Quitter	                                |");
 				System.out.println("	    ---------------------------------------------------- ");
 				System.out.println("\nVeuillez saisir votre commande : ");
 
-				menuString = sc.nextLine();
-				try{
-					menu = Integer.decode(menuString);
-				}
-				catch(NumberFormatException e){e.getMessage();}
-			}while(menu < 0 || menu > 2);
+				menu = scanfInt(sc);
+			}while(menu<0 || menu>2);
 
 			switch(menu){
 				case 0:
@@ -41,39 +45,105 @@ public class menuPrincipal{
 					jeu.run();
 					break;
 				case 2 :
-					options();
+					menu = -1;
+					try{
+						prop.load(new FileInputStream("src/config.txt"));
+						while(menu != 0){
+							
+							do{
+								clear();
+								System.out.println("\n	    ----------------  Options MasterMind   ------------- ");
+								System.out.println("	   |	1 : Mode de jeu :                               |");
+								if(prop.getProperty("placeur").compareTo("Ordi") == 0)
+									System.out.println("           |         -> Placeur : " + prop.getProperty("placeur") + "                             |");
+								else
+									System.out.println("           |         -> Placeur : " + prop.getProperty("placeur") + "                         |");
+								if(prop.getProperty("placeur").compareTo("Ordi") == 0)
+									System.out.println("           |         -> Devineur : " + prop.getProperty("devineur") + "                           |");
+								else
+									System.out.println("           |         -> Devineur : " + prop.getProperty("devineur") + "                       |");
+								System.out.println("	   |	2 : Nombre de boules : " + prop.getProperty("nbBoules") +"                         |");
+								System.out.println("	   |	3 : Sauvegarder les modifications               |");
+								System.out.println("	    ---------------------------------------------------- ");
+								System.out.println("	   |	0 : Retour                                      |");
+								System.out.println("	    ---------------------------------------------------- ");
+								System.out.println("\nVeuillez saisir votre commande : ");
+								
+								menu = scanfInt(sc);
+							
+							}while(menu<0 || menu > 3);
+							
+					
+							switch(menu){
+								case 1 :
+									System.out.println("Placeur (Ordi = 'O', Humain = 'H') = ");
+									valeurString = scanf(sc);
+									if(valeurString.compareTo("O") == 0)
+										prop.setProperty("placeur", "Ordi");
+									else if(valeurString.compareTo("H") == 0)
+										prop.setProperty("placeur", "Humain");
+									else{
+											System.out.println("Ce n'est pas une bonne valeur..");	
+											try{
+												Thread.sleep(3000);
+											}
+											catch(InterruptedException e){e.getMessage();}
+									}
+									System.out.println("Devineur (Ordi = 'O', Humain = 'H') = ");
+									valeurString = scanf(sc);
+									if(valeurString.compareTo("O") == 0)
+										prop.setProperty("devineur", "Ordi");
+									else if(valeurString.compareTo("H") == 0)
+										prop.setProperty("devineur", "Humain");
+									else{
+										System.out.println("Ce n'est pas une bonne valeur..");	
+										try{
+											Thread.sleep(3000);
+										}
+										catch(InterruptedException e){e.getMessage();}
+									}
+									break;
+								case 2 :
+									clear();
+									valeurInt = -1;
+									do{
+										System.out.println("Nombre de boules ? (3, 4 et 5 autorisé) ");
+										valeurInt = scanfInt(sc);
+										if(valeurInt>=3 && valeurInt<=5)
+											prop.setProperty("nbBoules", Integer.toString(valeurInt));
+										else{
+											System.out.println("Ce n'est pas une bonne valeur..");	
+											try{
+												Thread.sleep(3000);
+											}
+											catch(InterruptedException e){e.getMessage();}
+										}
+									}while(valeurInt < 3 || valeurInt > 5);
+									break;
+								case 3 :
+									prop.store(new FileOutputStream("src/config.txt"), null);
+									clear();
+									System.out.println("Options sauvegardées !");	
+									try{
+										Thread.sleep(3000);
+									}
+									catch(InterruptedException e){e.getMessage();}
+									break;
+								default : 
+									break;
+							}
+						}
+					}
+					catch (IOException ex) {ex.printStackTrace();}
+					menu = -1;
 					break;
 				default :
 					break;
 			}
-
-			clear();
+		
 		}
 		sc.close();
 
-	}
-
-
-	static void options(){
-		System.out.println("coucou");
-		
-		Properties prop = new Properties();
-		 
-    	try {
-    		//set the properties value
-    		
-    		prop.setProperty("database", "localhost");
-    		prop.setProperty("dbuser", "mkyong");
-    		prop.setProperty("dbpassword", "password");
- 
-    		//save properties to project root folder
-    		prop.store(new FileOutputStream("src/config.txt"), null);
- 
-    	} catch (IOException ex) {
-    		ex.printStackTrace();
-        }
-    
-		clear();
 	}
 
 	static void clear()
@@ -82,6 +152,22 @@ public class menuPrincipal{
 			System.out.print("\n");
 	}
 
+	static int scanfInt(Scanner sc){
+		int menu = -1;
+		String menuString = scanf(sc);
+		try{
+			menu = Integer.decode(menuString);
+		}
+		catch(NumberFormatException e){e.getMessage();}
+
+		return menu;
+	}
+	
+	static String scanf(Scanner sc){
+		String str;
+		str = sc.nextLine();
+		return str;	
+	}
 
 
 

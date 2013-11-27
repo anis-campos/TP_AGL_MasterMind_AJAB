@@ -1,4 +1,4 @@
-#Tue Nov 26 19:56:51 CET 2013
-placeur=ordi
-devineur=ordi
-nbBoule=4
+#Wed Nov 27 12:01:21 CET 2013
+placeur=Humain
+devineur=Ordi
+nbBoules=3
