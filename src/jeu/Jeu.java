@@ -26,11 +26,13 @@ public class Jeu{
 		Properties prop = new Properties();
 		 
     	try {
-    		this.nbBoule = Integer.parseInt(prop.getProperty("nbBoule"));
-    		tableauBoule=new Boule[nbBoule];
-               //load a properties file
+    		
+            //load a properties file
     		prop.load(new FileInputStream("src/config.txt"));
- 
+    		
+    		this.nbBoule = Integer.parseInt(prop.getProperty("nbBoules"));
+    		
+    		tableauBoule=new Boule[nbBoule];
             //placeur
             if( prop.getProperty("placeur") == "ordi")
             	placeur=new OrdiPlaceur();
@@ -48,7 +50,7 @@ public class Jeu{
             /* etc */
  
     	} catch (IOException ex) {
-    		System.out.println("Erreure - Impossible de lire le fichier \"src//config.txt\" !!");;
+    		System.out.println("Erreure - Impossible de lire le fichier \"src//config.txt\" !!");
         }
 	}
 		

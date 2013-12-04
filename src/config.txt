@@ -1,4 +1,4 @@
-#Wed Nov 27 14:27:02 CET 2013
+#Wed Dec 04 19:14:04 CET 2013
 placeur=Ordi
 devineur=Ordi
-nbBoules=3
+nbBoules=4
