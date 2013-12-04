@@ -20,19 +20,22 @@ public class Jeu{
 	Devineur devineur;
 	Placeur placeur;
 	int nbBoule;
-	Boule []tableauBoule;
+	Boule []placement;
+	Boule []proposition;
+	boolean running=true;
 	
-	public Jeu (/*les parametre*/){
+	public Jeu (){
 		Properties prop = new Properties();
 		 
     	try {
     		
-            //load a properties file
+
+    		//load a properties file
     		prop.load(new FileInputStream("src/config.txt"));
-    		
-    		this.nbBoule = Integer.parseInt(prop.getProperty("nbBoules"));
-    		
-    		tableauBoule=new Boule[nbBoule];
+
+    		this.nbBoule = Integer.decode( prop.getProperty("nbBoules"));
+    		placement=new Boule[nbBoule];
+    		proposition=new Boule[nbBoule];
             //placeur
             if( prop.getProperty("placeur") == "ordi")
             	placeur=new OrdiPlaceur();
@@ -67,8 +70,17 @@ public class Jeu{
 				//si c'est juste "fin"= true
 			//fin de test
 		//fin de boucle
+			placeur.placer(placement);
+			while (running) {
+				devineur.proposer(proposition);
+				verification();
+			}
 		}
 	
+		
+	void verification (){
+		
+	}
 			
 	
 			
