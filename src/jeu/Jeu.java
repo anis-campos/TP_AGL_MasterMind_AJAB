@@ -57,7 +57,7 @@ public class Jeu{
 			/* etc */
 
 		} catch (IOException ex) {
-			System.out.println("Erreure - Impossible de lire le fichier \"src//config.txt\" !!");
+			System.out.println("Erreur - Impossible de lire le fichier \"src//config.txt\" !!");
 		}
 	}
 
