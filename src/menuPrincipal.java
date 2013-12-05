@@ -34,13 +34,13 @@ public class menuPrincipal{
 				System.out.println("	   |	0 : Quitter	                                |");
 				System.out.println("	    ---------------------------------------------------- ");
 				System.out.println("\nVeuillez saisir votre commande : ");
-
 				menu = scanfInt(sc);
 			}while(menu<0 || menu>3);
 
 			switch(menu){
 				case 0:
 					System.out.println("Programme terminé !! ");
+					break;
 				case 1 :
 					Jeu jeu = new Jeu();
 					jeu.run();
@@ -70,7 +70,7 @@ public class menuPrincipal{
 								System.out.println("	    ---------------------------------------------------- ");
 								System.out.println("\nVeuillez saisir votre commande : ");
 								
-								menu = scanfInt(sc);
+									menu = scanfInt(sc);
 							
 							}while(menu<0 || menu > 3);
 							

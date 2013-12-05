@@ -7,8 +7,9 @@ import jeu.Boule;
 public class HumainDevineur   implements Devineur {
 
 	@Override
-	public void proposer(Boule []tabBoule) {
-		// TODO Auto-generated method stub
+	public Boule[] proposer(Boule []tabBoule) {
+		return tabBoule;
+		
 		
 	}
 

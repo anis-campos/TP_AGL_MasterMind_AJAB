@@ -1,5 +1,6 @@
 package jeu;
 
+
 public class Boule {
 
 	//definition des couleurs
@@ -11,6 +12,8 @@ public class Boule {
 		Violet,
 		Orange;	
 	}
+	
+
 	
 	private Couleurs couleur;
 	
