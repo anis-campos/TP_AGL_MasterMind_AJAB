@@ -1,16 +1,16 @@
 package placeur;
 
-import jeu.Boule;
+import jeu.TableauBoule;
 
 
 public class OrdiPlaceur implements Placeur {
 
-	@Override
-	@SuppressWarnings("unused") 
-	public void placer(Boule []tabBoule){
-		for(Boule boule : tabBoule){
-			boule = new Boule();
-		}
+
+	public TableauBoule placer(TableauBoule tabBoule){
+//		for(Boule boule : tabBoule.tab){
+//			boule = new Boule();
+//		}
+		return tabBoule;
 	}
 }
 

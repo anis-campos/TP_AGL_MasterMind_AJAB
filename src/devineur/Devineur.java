@@ -1,8 +1,8 @@
 package devineur;
 
-import jeu.Boule;
+import jeu.TableauBoule;
 
 public  abstract  interface Devineur {
-	public Boule[] proposer( Boule []oldProposition);
-	public void lirePions(Boule []tabBoule, int nbPionBlanc, int nbPionRouge);
+	public TableauBoule proposer( TableauBoule oldProposition);
+	public void lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge);
 }

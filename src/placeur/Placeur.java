@@ -1,8 +1,8 @@
 package placeur;
 
-import jeu.Boule;
+import jeu.TableauBoule;
 
 public  abstract  interface Placeur {
-	public void placer(Boule []tabBoule);
+	public TableauBoule placer(TableauBoule tabBoule);
 	
 }

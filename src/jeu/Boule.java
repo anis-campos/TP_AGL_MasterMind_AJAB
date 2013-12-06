@@ -17,6 +17,10 @@ public class Boule {
 	
 	private Couleurs couleur;
 	
+	public void setCouleur(Couleurs couleur) {
+		this.couleur = couleur;
+	}
+
 	public Couleurs getCouleur() {
 		return couleur;
 	}

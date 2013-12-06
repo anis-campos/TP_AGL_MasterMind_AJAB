@@ -1,15 +1,16 @@
 package placeur;
 
-import jeu.Boule;
+import jeu.TableauBoule;
 
 
 
 public class HumainPlaceur implements Placeur {
 
+
 	@Override
-	public void placer(Boule []tabBoule) {
-		
-		
+	public TableauBoule placer(TableauBoule tabBoule) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

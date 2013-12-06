@@ -1,20 +1,21 @@
 package devineur;
 
-import jeu.Boule;
+import jeu.TableauBoule;
 
 
 
 public class HumainDevineur   implements Devineur {
 
+
 	@Override
-	public Boule[] proposer(Boule []tabBoule) {
-		return tabBoule;
-		
-		
+	public TableauBoule proposer(TableauBoule oldProposition) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void lirePions(Boule[] tabBoule, int nbPionBlanc, int nbPionRouge) {
+	public void lirePions(TableauBoule tabBoule, int nbPionBlanc,
+			int nbPionRouge) {
 		// TODO Auto-generated method stub
 		
 	}

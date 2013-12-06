@@ -1,23 +1,20 @@
 package devineur;
 
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Vector;
 
-import com.sun.corba.se.pept.transport.InboundConnectionCache;
-
 import jeu.Boule;
 import jeu.Boule.Couleurs;
+import jeu.TableauBoule;
 
 
 public class OrdiDevineur  implements Devineur {
 
 	int nbPionRouge, nbPionBlanc, indCoul, nbBoule;
-	Boule []proposition;
-	Vector<Couleurs> couleurJuste;
-	boolean recherche=true, premierePermutation=false;
+	TableauBoule proposition;
 
-	Vector <Boule[]> listePossibilite;
+	Vector <TableauBoule> listePossibilite;
 
 	public OrdiDevineur(int nbBoule){
 		this.nbPionRouge = 0;
@@ -25,11 +22,9 @@ public class OrdiDevineur  implements Devineur {
 		this.indCoul = 0;
 		this.nbBoule = nbBoule;
 		initListePossibilite();
-		couleurJuste= new Vector<Couleurs>();
-		this.proposition = new Boule[this.nbBoule];
-		for (int i = 0; i< this.nbBoule; i++){
-			proposition[i] = new Boule();
-		}
+		
+		this.proposition = new TableauBoule(this.nbBoule);
+		
 	}
 
 	void initListePossibilite() {
@@ -49,11 +44,11 @@ public class OrdiDevineur  implements Devineur {
 		int val_Base_NbCouleur;
 		
 		//initialisation du vector
-		listePossibilite= new Vector<Boule[]>();
+		listePossibilite= new Vector<TableauBoule>();
 		
 		//initialisation des tableau de nbBoule boules
 		for (int i=0;i<nbLigne;i++){
-			listePossibilite.add(new Boule[nbBoule]);
+			listePossibilite.add(new TableauBoule(nbBoule));
 		}
 		
 		//inisiatlisation des boules 
@@ -62,7 +57,7 @@ public class OrdiDevineur  implements Devineur {
 		{
 			val_Base_NbCouleur = Integer.decode(Integer.toString(i, nbCouleur));
 			for (int n = 0; n<nbBoule; n++){
-				listePossibilite.get(i)[nbBoule-1-n] = new Boule(Couleurs.values()[ ((val_Base_NbCouleur/(int)Math.pow(10, n))) % nbCouleur]);
+				listePossibilite.get(i).tab.get(nbBoule-1-n).setCouleur(Couleurs.values()[ ((val_Base_NbCouleur/(int)Math.pow(10, n))) % nbCouleur]);
 			}
 
 
@@ -70,59 +65,83 @@ public class OrdiDevineur  implements Devineur {
 
 	}
 
-	public static void main (String []args){
-		int compteur = 0;
-		OrdiDevineur ordi = new OrdiDevineur(4);
-		for (Boule[] boules : ordi.listePossibilite){
-			for (Boule boule : boules){
-				System.out.print(boule.getCouleur().name()+" " );
-				
+	
+	public void comparerEnlever(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge){
+//		Vector <TableauBoule> copieListePossibilite=listePossibilite;
+//		for (TableauBoule ligne : listePossibilite){
+//				if (!comparer (ligne,tabBoule,nbPionBlanc,nbPionRouge))
+//					copieListePossibilite.removeElement(ligne);
+//			}
+		TableauBoule ligne;
+		for (int i=0; i<listePossibilite.size();)
+		{
+			ligne = listePossibilite.get(i);
+			if (!comparer (ligne,tabBoule,nbPionBlanc,nbPionRouge))
+				listePossibilite.removeElement(i);
+			else 
+				i++;
+		}
+	}
+	
+	boolean comparer (TableauBoule ligne,TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge){
+		
+		int nbPB=0, nbPR=0;
+
+		List<Boule> listeBoulePlacement =ligne.tab;
+		List<Boule> listeBouleProposition = tabBoule.tab;
+
+		//recherche de pions rouge 
+		
+		for (int indice=0;indice<nbBoule;){
+			if (ligne.tab.get(indice).getCouleur()==tabBoule.tab.get(indice).getCouleur()){
+				nbPR++;
+				listeBouleProposition.remove(indice);
+				listeBoulePlacement.remove(indice);
 			}
-			compteur++;
-			System.out.println();
+			else 
+				indice++;
 		}
 		
-		System.out.println("Il y a "+compteur+" combinaisons");
+		//recherche de pions blancs
+		for (Boule boule1 : listeBoulePlacement){
+
+			for (Boule boule2 : listeBouleProposition ){
+				if (boule1.getCouleur()==boule2.getCouleur()){
+					nbPB++;
+					listeBouleProposition.remove(boule2);
+					break;
+
+				}
+			}
+			
+			
+		}
+		return nbPB==nbPionBlanc && nbPR==nbPionRouge;
+	}
+//	public static void main (String []args){
+//		int compteur = 0;
+//		OrdiDevineur ordi = new OrdiDevineur(4);
+//		for (TableauBoule boules : ordi.listePossibilite){
+//			for (Boule boule : boules){
+//				System.out.print(boule.getCouleur().name()+" " );
+//				
+//			}
+//			compteur++;
+//			System.out.println();
+//		}
+//		
+//		System.out.println("Il y a "+compteur+" combinaisons");
+//	}
+
+
+	public TableauBoule proposer(TableauBoule oldProposition) {
+
+		return listePossibilite.get((int)Math.random()*(listePossibilite.size()-1));
 	}
 
 	@Override
-	public Boule[] proposer(Boule []oldProposition) {
-		if (couleurJuste.size() < nbBoule ){
-
-			for (Boule boule : proposition){
-				boule = new Boule(Boule.Couleurs.values()[indCoul]);
-			}
-			indCoul++;
-		}
-		else{
-			recherche=false;
-			if (!premierePermutation){
-				int index=0;
-				for ( Boule boule : proposition)
-					boule=new Boule(couleurJuste.get(index++));
-				premierePermutation=true;
-			}
-			else {
-				//Blablabla
-			}
-		}	
-
-		return proposition;
-	}
-
-	@Override
-	public void lirePions(Boule[] tabBoule, int nbPionBlanc, int nbPionRouge) {
-		if (recherche){
-			if ( nbPionRouge > 0 )
-			{
-				this.nbPionRouge+=nbPionRouge;
-				for (int i=0; i<nbPionRouge;i++)
-					couleurJuste.add(tabBoule[1].getCouleur());
-			}
-		}
-		else{
-
-		}
+	public void lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge) {
+		comparerEnlever(tabBoule,nbPionBlanc,nbPionRouge);
 	}
 
 

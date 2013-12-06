@@ -6,7 +6,6 @@ package jeu;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
@@ -24,8 +23,7 @@ public class Jeu{
 	Placeur placeur;
 	int nbBoule;
 	final int NB_ESSAI = 50;
-	Boule []placement;
-	Boule []proposition;
+	TableauBoule placement , proposition;
 	boolean running=true;
 
 	public Jeu (){
@@ -38,8 +36,8 @@ public class Jeu{
 			prop.load(new FileInputStream("src/config.txt"));
 
 			this.nbBoule = Integer.decode( prop.getProperty("nbBoules"));
-			placement=new Boule[nbBoule];
-			proposition=new Boule[nbBoule];
+			placement=new TableauBoule(nbBoule);
+			proposition=new TableauBoule(nbBoule);
 			//placeur
 			if( prop.getProperty("placeur") == "ordi")
 				placeur=new OrdiPlaceur();
@@ -95,19 +93,17 @@ public class Jeu{
 	void verification (){
 		int nbPionBlanc=0, nbPionRouge=0;
 
-		List<Boule> listeBoulePlacement = Arrays.asList(placement);
-		List<Boule> listeBouleProposition = Arrays.asList(proposition);
+		List<Boule> listeBoulePlacement = placement.tab;
+		List<Boule> listeBouleProposition = proposition.tab;
 
 		//recherche de pions rouge 
 		
-		for (int indice=0;indice<nbBoule;){
-			if (placement[indice].getCouleur()==proposition[indice].getCouleur()){
+		for (int indice=0;indice<nbBoule;indice++){
+			if (placement.tab.get(indice).getCouleur()==proposition.tab.get(indice).getCouleur()){
 				nbPionRouge++;
 				listeBouleProposition.remove(indice);
 				listeBoulePlacement.remove(indice);
 			}
-			else 
-				indice++;
 		}
 		
 		//si nbBoule pions rouge il a gagné et le jeu s'arrete
