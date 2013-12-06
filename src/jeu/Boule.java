@@ -41,7 +41,7 @@ public class Boule {
 	}
 	
 	public String toString (){
-		return "La couleur de la boule est : "+this.couleur;
+		return this.couleur.toString();
 	}
 	
 	
