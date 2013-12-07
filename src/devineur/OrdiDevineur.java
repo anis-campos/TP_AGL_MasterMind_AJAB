@@ -1,6 +1,7 @@
 package devineur;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -22,9 +23,9 @@ public class OrdiDevineur  implements Devineur {
 		this.indCoul = 0;
 		this.nbBoule = nbBoule;
 		initListePossibilite();
-		
+
 		this.proposition = new TableauBoule(this.nbBoule);
-		
+
 	}
 
 	void initListePossibilite() {
@@ -41,67 +42,70 @@ public class OrdiDevineur  implements Devineur {
 		 * */
 		int nbCouleur = Couleurs.values().length;
 		int nbLigne = (int) Math.pow(nbCouleur,nbBoule);
-		int val_Base_NbCouleur;
-		
+
 		//initialisation du vector
 		listePossibilite= new Vector<TableauBoule>();
-		
+
 		//initialisation des tableau de nbBoule boules
 		for (int i=0;i<nbLigne;i++){
 			listePossibilite.add(new TableauBoule(nbBoule));
 		}
-		
+
 		//inisiatlisation des boules 
 		//--------------------------
+
 		for (int i=0;i<nbLigne;i++)
 		{
-			val_Base_NbCouleur = Integer.decode(Integer.toString(i, nbCouleur));
+
+			int val_Base_NbCouleur = Integer.decode(Integer.toString(i, nbCouleur));
 			for (int n = 0; n<nbBoule; n++){
-				listePossibilite.get(i).tab.get(nbBoule-1-n).setCouleur(Couleurs.values()[ ((val_Base_NbCouleur/(int)Math.pow(10, n))) % nbCouleur]);
+				int indice=(val_Base_NbCouleur/(int)(Math.pow(10, n)))% 10;
+				listePossibilite.get(i).tab.get(nbBoule-1-n).setCouleur(Couleurs.values()[indice]);
 			}
 
-
 		}
-
 	}
 
-	
-	public void comparerEnlever(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge){
-//		Vector <TableauBoule> copieListePossibilite=listePossibilite;
-//		for (TableauBoule ligne : listePossibilite){
-//				if (!comparer (ligne,tabBoule,nbPionBlanc,nbPionRouge))
-//					copieListePossibilite.removeElement(ligne);
-//			}
+
+	public void comparerEnlever(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge) throws CloneNotSupportedException{
+
 		TableauBoule ligne;
 		for (int i=0; i<listePossibilite.size();)
 		{
 			ligne = listePossibilite.get(i);
 			if (!comparer (ligne,tabBoule,nbPionBlanc,nbPionRouge))
-				listePossibilite.removeElement(i);
+				listePossibilite.remove(i);
 			else 
 				i++;
 		}
+		System.out.println("fini");
 	}
-	
-	boolean comparer (TableauBoule ligne,TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge){
-		
+
+	boolean comparer (TableauBoule ligne,TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge) throws CloneNotSupportedException{
+
 		int nbPB=0, nbPR=0;
 
-		List<Boule> listeBoulePlacement =ligne.tab;
-		List<Boule> listeBouleProposition = tabBoule.tab;
+		List<Boule> listeBoulePlacement = new ArrayList<Boule>(nbBoule);
+		List<Boule> listeBouleProposition = new ArrayList<Boule>(nbBoule);
+		for (Boule boule : tabBoule.tab)
+			listeBoulePlacement.add(boule.clone());
+
+		for (Boule boule : ligne.tab)
+			listeBouleProposition.add(boule.clone());
+
 
 		//recherche de pions rouge 
-		
-		for (int indice=0;indice<nbBoule;){
-			if (ligne.tab.get(indice).getCouleur()==tabBoule.tab.get(indice).getCouleur()){
+
+		for (int indice=0;indice<listeBoulePlacement.size() && !listeBoulePlacement.isEmpty();){
+			if (listeBoulePlacement.get(indice).getCouleur().name().equals(listeBouleProposition.get(indice).getCouleur().name())){
 				nbPR++;
 				listeBouleProposition.remove(indice);
 				listeBoulePlacement.remove(indice);
 			}
-			else 
+			else
 				indice++;
 		}
-		
+
 		//recherche de pions blancs
 		for (Boule boule1 : listeBoulePlacement){
 
@@ -113,35 +117,25 @@ public class OrdiDevineur  implements Devineur {
 
 				}
 			}
-			
-			
+
+
 		}
 		return nbPB==nbPionBlanc && nbPR==nbPionRouge;
 	}
-//	public static void main (String []args){
-//		int compteur = 0;
-//		OrdiDevineur ordi = new OrdiDevineur(4);
-//		for (TableauBoule boules : ordi.listePossibilite){
-//			for (Boule boule : boules){
-//				System.out.print(boule.getCouleur().name()+" " );
-//				
-//			}
-//			compteur++;
-//			System.out.println();
-//		}
-//		
-//		System.out.println("Il y a "+compteur+" combinaisons");
-//	}
 
 
 	public TableauBoule proposer(TableauBoule oldProposition) {
-
-		return listePossibilite.get((int)Math.random()*(listePossibilite.size()-1));
+		int indice = (int) (Math.random()*(listePossibilite.size()-1));
+		return listePossibilite.get(indice);
 	}
 
 	@Override
 	public void lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge) {
-		comparerEnlever(tabBoule,nbPionBlanc,nbPionRouge);
+		try {
+			comparerEnlever(tabBoule,nbPionBlanc,nbPionRouge);
+		} catch (CloneNotSupportedException e) {
+			System.out.println("erreur clone devineur");
+		}
 	}
 
 

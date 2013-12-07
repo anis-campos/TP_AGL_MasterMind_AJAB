@@ -15,7 +15,7 @@ public class menuPrincipal{
 	private static Properties prop = new Properties();
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 		
 		//Ces deux valeurs représentes des valeurs récupérer par le scanf(), utilisés pour les modifications d'options
 		String valeurString;
@@ -63,7 +63,7 @@ public class menuPrincipal{
 								if(prop.getProperty("devineur").compareTo("Ordi") == 0)
 									System.out.print("  ");
 								System.out.println("|");
-								System.out.println("	   |	2 : Nombre de boules : " + prop.getProperty("nbBoules") +"                        |");
+								System.out.println("	   |	2 : Nombre de boules : " + prop.getProperty("nbBoule") +"                        |");
 								System.out.println("	   |	3 : Sauvegarder les modifications               |");
 								System.out.println("	    ---------------------------------------------------- ");
 								System.out.println("	   |	0 : Retour                                      |");
@@ -111,7 +111,7 @@ public class menuPrincipal{
 										System.out.println("Nombre de boules ? (3, 4 et 5 autorisé) ");
 										valeurInt = scanfInt(sc);
 										if(valeurInt>=3 && valeurInt<=5)
-											prop.setProperty("nbBoules", Integer.toString(valeurInt));
+											prop.setProperty("nbBoule", Integer.toString(valeurInt));
 										else{
 											System.out.println("Ce n'est pas une bonne valeur..");	
 											try{

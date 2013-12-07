@@ -1,16 +1,16 @@
 package jeu;
 
 
-public class Boule {
+public class Boule implements Cloneable{
 
 	//definition des couleurs
 	public static enum Couleurs {
-		Rose,
-		Bleu,
-		Vert,
-		Jaune,
-		Violet,
-		Orange;	
+		Rose,  //0
+		Bleu,  //1
+		Vert,  //2
+		Jaune, //3
+		Violet,//4
+		Orange;//5	
 	}
 	
 
@@ -48,5 +48,10 @@ public class Boule {
 		return this.couleur.name();
 	}
 	
+	public Boule clone () throws CloneNotSupportedException {
+		Boule clone = (Boule)super.clone();
+		clone.setCouleur(this.couleur);
+		return clone;
+	}
 	
 }
