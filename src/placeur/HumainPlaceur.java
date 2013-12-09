@@ -29,31 +29,34 @@ public class HumainPlaceur implements Placeur {
 				i++;
 			}
 			do{
-			System.out.print("Quel trou voulez-vous modifier ?");
+			System.out.print("Quel trou voulez-vous modifier ? (saisissez 0 pour ne rien changer)");
 			choixTrou = sc.nextInt();
-			}while(choixTrou < 1 || choixTrou > i);
-			
-			do{
-			System.out.println("Quelle couleur voulez-vous mettre ?");
-			System.out.println("(1 pour Rose, 2 pour Bleu, 3 pour Vert, 4 pour Jaune, 5 pour Violet, 6 pour Orange");
-			System.out.println("Votre choix : ");
-			choixCoul = sc.nextInt();
-			}while(choixCoul < 1 || choixCoul > 6);
-					
-			tabBoule.tab.get(choixTrou - 1).setCouleur(Couleurs.values()[choixCoul -1]);
-			tabDesTrousRemplis[choixTrou - 1] = true;
-			
-			i = 1;
-			rempli = true;
-			while(i < tabDesTrousRemplis.length){
-				if(!tabDesTrousRemplis[i]){
-					rempli = false;
-					break;
-				}
-				else
-					i++;
+			}while(choixTrou < 0 || choixTrou > i);
+			if (choixTrou == 0){
+				rempli = true;
 			}
-			
+			else{
+				do{
+				System.out.println("Quelle couleur voulez-vous mettre ?");
+				System.out.println("(1 pour Rose, 2 pour Bleu, 3 pour Vert, 4 pour Jaune, 5 pour Violet, 6 pour Orange");
+				System.out.println("Votre choix : ");
+				choixCoul = sc.nextInt();
+				}while(choixCoul < 1 || choixCoul > 6);
+						
+				tabBoule.tab.get(choixTrou - 1).setCouleur(Couleurs.values()[choixCoul -1]);
+				tabDesTrousRemplis[choixTrou - 1] = true;
+				
+				i = 1;
+				rempli = true;
+				while(i < tabDesTrousRemplis.length){
+					if(!tabDesTrousRemplis[i]){
+						rempli = false;
+						break;
+					}
+					else
+						i++;
+				}
+			}
 			if(rempli){
 				do{
 				System.out.println("Avez-vous fini ? (1 pour Oui, 2 pour Non)");

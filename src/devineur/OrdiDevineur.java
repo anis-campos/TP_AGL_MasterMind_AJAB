@@ -32,7 +32,7 @@ public class OrdiDevineur  implements Devineur {
 
 		/*C'est une matrice de nbCouleur^4 lignes et nbBoule colone
 		 * les lignes sont dans lordre croissant
-		 * example
+		 * exemple
 		 * 	0 0 0 0
 		 *  0 0 0 1
 		 *  -------

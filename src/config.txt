@@ -1,4 +1,4 @@
-#Sat Dec 07 13:29:43 CET 2013
-nbBoule=5
+#Mon Dec 09 17:17:23 CET 2013
+nbBoule=4
 placeur=Ordi
-devineur=Ordi
+devineur=Humain
