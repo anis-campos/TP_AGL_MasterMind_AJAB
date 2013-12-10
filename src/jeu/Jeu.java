@@ -67,7 +67,7 @@ public class Jeu{
 		
 		while (running && compteur<NB_ESSAI) {
 			compteur++;
-			proposition=devineur.proposer(proposition);
+			devineur.proposer(proposition);
 			System.out.println("\n\nVous avez proposé la composition "+proposition.tab);
 			verification();
 		}

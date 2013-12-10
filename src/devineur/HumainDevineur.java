@@ -10,8 +10,9 @@ import jeu.Boule.Couleurs;
 public class HumainDevineur   implements Devineur {
 
 	
+	@SuppressWarnings("resource")
 	@Override
-	public TableauBoule proposer(TableauBoule oldProposition) {
+	public void proposer(TableauBoule oldProposition) {
 		Scanner sc = new Scanner(System.in);
 		int choixTrou, choixCoul, choix;
 		boolean[] tabDesTrousRemplis = new boolean[oldProposition.tab.size()] ;
@@ -67,8 +68,6 @@ public class HumainDevineur   implements Devineur {
 			}
 		
 		}
-		
-		return oldProposition;
 	}
 
 	@Override

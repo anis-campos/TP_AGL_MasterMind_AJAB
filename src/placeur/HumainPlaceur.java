@@ -10,7 +10,7 @@ public class HumainPlaceur implements Placeur {
 
 	@SuppressWarnings("resource")
 	@Override
-	public TableauBoule placer(TableauBoule tabBoule) {
+	public void placer(TableauBoule tabBoule) {
 		/*Le placeur Humain choisi ces boules tant qu'il n'a pas rempli tous les trous, et confirmer ses choix*/
 		
 		Scanner sc = new Scanner(System.in);
@@ -69,7 +69,7 @@ public class HumainPlaceur implements Placeur {
 		
 		}
 		
-		return tabBoule;
+		
 	}
 
 

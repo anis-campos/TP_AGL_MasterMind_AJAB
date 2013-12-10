@@ -124,9 +124,11 @@ public class OrdiDevineur  implements Devineur {
 	}
 
 
-	public TableauBoule proposer(TableauBoule oldProposition) {
+	public void proposer(TableauBoule proposition) {
 		int indice = (int) (Math.random()*(listePossibilite.size()-1));
-		return listePossibilite.get(indice);
+		List<Boule> possibilite = listePossibilite.get(indice).tab;
+		for (int i = 0; i< proposition.tab.size();i++)
+			proposition.tab.get(i).setCouleur(possibilite.get(i).getCouleur());
 	}
 
 	@Override
