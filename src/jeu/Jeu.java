@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package jeu;
 
 /*
@@ -20,16 +23,34 @@ import devineur.Devineur;
 import devineur.HumainDevineur;
 import devineur.OrdiDevineur;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Jeu.
+ */
 public class Jeu
 {
 	// les atributs de classes
+	/** The devineur. */
 	Devineur devineur;
+	
+	/** The placeur. */
 	Placeur placeur;
+	
+	/** The nb boule. */
 	int nbBoule;
+	
+	/** The nb essai. */
 	final int NB_ESSAI = 10;
+	
+	/** The proposition. */
 	TableauBoule placement, proposition;
+	
+	/** The running. */
 	boolean running = true;
 
+	/**
+	 * Instantiates a new jeu.
+	 */
 	public Jeu() {
 		Properties prop = new Properties();
 
@@ -58,6 +79,11 @@ public class Jeu
 		}
 	}
 
+	/**
+	 * Run.
+	 *
+	 * @throws CloneNotSupportedException the clone not supported exception
+	 */
 	public void run() throws CloneNotSupportedException
 	{
 		int compteur = 0;
@@ -80,6 +106,11 @@ public class Jeu
 		keyIn.nextLine();
 	}
 
+	/**
+	 * Verification.
+	 *
+	 * @throws CloneNotSupportedException the clone not supported exception
+	 */
 	void verification() throws CloneNotSupportedException
 	{
 		int nbPionBlanc = 0, nbPionRouge = 0;

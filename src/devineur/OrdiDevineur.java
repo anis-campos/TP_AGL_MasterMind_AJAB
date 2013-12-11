@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package devineur;
 
 import java.util.ArrayList;
@@ -8,14 +11,27 @@ import jeu.Boule;
 import jeu.Boule.Couleurs;
 import jeu.TableauBoule;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OrdiDevineur.
+ */
 public class OrdiDevineur implements Devineur
 {
 
+	/** The nb boule. */
 	int nbPionRouge, nbPionBlanc, indCoul, nbBoule;
+	
+	/** The proposition. */
 	TableauBoule proposition;
 
+	/** The liste possibilite. */
 	Vector<TableauBoule> listePossibilite;
 
+	/**
+	 * Instantiates a new ordi devineur.
+	 *
+	 * @param nbBoule the nb boule
+	 */
 	public OrdiDevineur(int nbBoule) {
 		this.nbPionRouge = 0;
 		this.nbPionBlanc = 0;
@@ -27,6 +43,9 @@ public class OrdiDevineur implements Devineur
 
 	}
 
+	/**
+	 * Inits the liste possibilite.
+	 */
 	void initListePossibilite()
 	{
 
@@ -60,6 +79,14 @@ public class OrdiDevineur implements Devineur
 		}
 	}
 
+	/**
+	 * Comparer enlever.
+	 *
+	 * @param tabBoule the tab boule
+	 * @param nbPionBlanc the nb pion blanc
+	 * @param nbPionRouge the nb pion rouge
+	 * @throws CloneNotSupportedException the clone not supported exception
+	 */
 	public void comparerEnlever(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge) throws CloneNotSupportedException
 	{
 
@@ -73,6 +100,16 @@ public class OrdiDevineur implements Devineur
 		System.out.println("fini");
 	}
 
+	/**
+	 * Comparer.
+	 *
+	 * @param ligne the ligne
+	 * @param tabBoule the tab boule
+	 * @param nbPionBlanc the nb pion blanc
+	 * @param nbPionRouge the nb pion rouge
+	 * @return true, if successful
+	 * @throws CloneNotSupportedException the clone not supported exception
+	 */
 	boolean comparer(TableauBoule ligne, TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge) throws CloneNotSupportedException
 	{
 
@@ -114,6 +151,9 @@ public class OrdiDevineur implements Devineur
 		return nbPB == nbPionBlanc && nbPR == nbPionRouge;
 	}
 
+	/* (non-Javadoc)
+	 * @see devineur.Devineur#proposer(jeu.TableauBoule)
+	 */
 	public void proposer(TableauBoule proposition)
 	{
 		int indice = (int) (Math.random() * (listePossibilite.size() - 1));
@@ -122,6 +162,9 @@ public class OrdiDevineur implements Devineur
 			proposition.tab.get(i).setCouleur(possibilite.get(i).getCouleur());
 	}
 
+	/* (non-Javadoc)
+	 * @see devineur.Devineur#lirePions(jeu.TableauBoule, int, int)
+	 */
 	@Override
 	public void lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge)
 	{

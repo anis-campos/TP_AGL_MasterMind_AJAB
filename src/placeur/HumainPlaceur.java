@@ -1,12 +1,22 @@
+/*
+ * 
+ */
 package placeur;
 
 import jeu.Boule.Couleurs;
 import jeu.TableauBoule;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HumainPlaceur.
+ */
 public class HumainPlaceur implements Placeur
 {
 
+	/* (non-Javadoc)
+	 * @see placeur.Placeur#placer(jeu.TableauBoule)
+	 */
 	@SuppressWarnings("resource")
 	@Override
 	public void placer(TableauBoule tabBoule)

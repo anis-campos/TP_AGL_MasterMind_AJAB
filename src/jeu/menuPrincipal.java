@@ -1,3 +1,4 @@
+package jeu;
 /*
  * Anis DA SILVA CAMPOS, Julien RATON, Benoit RONGEARD & Antoine BOUQUET
  * 
@@ -10,13 +11,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
-import jeu.Jeu;
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class menuPrincipal.
+ */
 public class menuPrincipal
 {
 
+	/** The prop. */
 	private static Properties prop = new Properties();
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws CloneNotSupportedException the clone not supported exception
+	 */
 	public static void main(String[] args) throws CloneNotSupportedException
 	{
 
@@ -165,12 +175,21 @@ public class menuPrincipal
 
 	}
 
+	/**
+	 * Clear.
+	 */
 	static void clear()
 	{
 		for (int i = 0; i < 20; i++)
 			System.out.print("\n");
 	}
 
+	/**
+	 * Scanf int.
+	 *
+	 * @param sc the sc
+	 * @return the int
+	 */
 	static int scanfInt(Scanner sc)
 	{
 		int menu = -1;
@@ -185,6 +204,12 @@ public class menuPrincipal
 		return menu;
 	}
 
+	/**
+	 * Scanf.
+	 *
+	 * @param sc the sc
+	 * @return the string
+	 */
 	static String scanf(Scanner sc)
 	{
 		String str;

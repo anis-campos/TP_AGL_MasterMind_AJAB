@@ -1,12 +1,26 @@
+/*
+ * 
+ */
 package jeu;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TableauBoule.
+ */
 public class TableauBoule
 {
+	
+	/** The tab. */
 	public List<Boule> tab;
 
+	/**
+	 * Instantiates a new tableau boule.
+	 *
+	 * @param nbBoule the nb boule
+	 */
 	public TableauBoule(int nbBoule) {
 		tab = new ArrayList<Boule>(nbBoule);
 		for (int i = 0; i < nbBoule; i++) {
@@ -14,6 +28,9 @@ public class TableauBoule
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	{
 		String chaine = "[";

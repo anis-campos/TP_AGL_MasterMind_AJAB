@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package devineur;
 
 import java.util.Scanner;
@@ -5,9 +8,16 @@ import java.util.Scanner;
 import jeu.TableauBoule;
 import jeu.Boule.Couleurs;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HumainDevineur.
+ */
 public class HumainDevineur implements Devineur
 {
 
+	/* (non-Javadoc)
+	 * @see devineur.Devineur#proposer(jeu.TableauBoule)
+	 */
 	@SuppressWarnings("resource")
 	@Override
 	public void proposer(TableauBoule oldProposition)
@@ -68,6 +78,9 @@ public class HumainDevineur implements Devineur
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see devineur.Devineur#lirePions(jeu.TableauBoule, int, int)
+	 */
 	@Override
 	public void lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge)
 	{
