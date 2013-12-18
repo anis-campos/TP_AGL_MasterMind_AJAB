@@ -22,12 +22,11 @@ public class menuPrincipal
 	private static Properties prop = new Properties();
 
 	/**
-	 * The main method.
+	 * La méthode main.
 	 *
-	 * @param args the arguments
-	 * @throws CloneNotSupportedException the clone not supported exception
+	 * @param args les arguments
 	 */
-	public static void main(String[] args) throws CloneNotSupportedException
+	public static void main(String[] args) 
 	{
 
 		// Ces deux valeurs représentes des valeurs récupérer par le scanf(),
@@ -176,7 +175,7 @@ public class menuPrincipal
 	}
 
 	/**
-	 * Clear.
+	 * Cette méthode permet de nettoyer l'écran 
 	 */
 	static void clear()
 	{
@@ -185,10 +184,10 @@ public class menuPrincipal
 	}
 
 	/**
-	 * Scanf int.
+	 * méthode qui permet de lire un entier dans un Scanner
 	 *
-	 * @param sc the sc
-	 * @return the int
+	 * @param sc  le Scanner à lire
+	 * @return l'entier lut
 	 */
 	static int scanfInt(Scanner sc)
 	{
@@ -205,10 +204,10 @@ public class menuPrincipal
 	}
 
 	/**
-	 * Scanf.
+	 * méthode qui permet de lire une phrase dans un Scanner.
 	 *
-	 * @param sc the sc
-	 * @return the string
+	 * @param sc  le Scanner à lire
+	 * @return la chaine lut.
 	 */
 	static String scanf(Scanner sc)
 	{

@@ -84,7 +84,7 @@ public class Jeu
 	 *
 	 * @throws CloneNotSupportedException the clone not supported exception
 	 */
-	public void run() throws CloneNotSupportedException
+	public void run()
 	{
 		int compteur = 0;
 		placeur.placer(placement);
@@ -111,7 +111,7 @@ public class Jeu
 	 *
 	 * @throws CloneNotSupportedException the clone not supported exception
 	 */
-	void verification() throws CloneNotSupportedException
+	void verification() 
 	{
 		int nbPionBlanc = 0, nbPionRouge = 0;
 

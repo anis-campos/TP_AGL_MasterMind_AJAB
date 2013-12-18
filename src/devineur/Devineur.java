@@ -6,6 +6,7 @@ package devineur;
 import jeu.TableauBoule;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * L'interface qui drecrit les méthodes du devineur.
  * @author Anis 

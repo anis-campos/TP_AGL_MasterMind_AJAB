@@ -94,9 +94,15 @@ public class Boule implements Cloneable
 	/* (non-Javadoc)
 	 * @see java.lang.Object#clone()
 	 */
-	public Boule clone() throws CloneNotSupportedException
+	public Boule clone()
 	{
-		Boule clone = (Boule) super.clone();
+		Boule clone;
+		try {
+			clone = (Boule) super.clone();
+		}
+		catch (CloneNotSupportedException e) {
+			return null;
+		}
 		clone.setCouleur(this.couleur);
 		return clone;
 	}

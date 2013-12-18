@@ -7,15 +7,16 @@ import jeu.TableauBoule;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Placeur.
+ * l'interface du Placeur.
  */
 public abstract interface Placeur
 {
 	
 	/**
-	 * Placer.
+	 * Le placeur va choisir les couleurs des boules.
 	 *
-	 * @param tabBoule the tab boule
+	 *
+	 * @param tabBoule le tableau de boule a placer
 	 */
 	public void placer(TableauBoule tabBoule);
 
