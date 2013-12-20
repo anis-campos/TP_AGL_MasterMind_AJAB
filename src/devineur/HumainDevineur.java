@@ -82,9 +82,9 @@ public class HumainDevineur implements Devineur
 	 * @see devineur.Devineur#lirePions(jeu.TableauBoule, int, int)
 	 */
 	@Override
-	public void lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge)
+	public boolean lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge)
 	{
-		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

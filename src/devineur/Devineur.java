@@ -30,5 +30,5 @@ public abstract interface Devineur
 	 * @param nbPionBlanc  Le nombre de pion blanc, et donc, de couleur mal placée
 	 * @param nbPionRouge  Le nombre de pion rouge, et donc, de couleur bien placée
 	 */
-	public void lirePions(TableauBoule proposition, int nbPionBlanc, int nbPionRouge);
+	public boolean lirePions(TableauBoule proposition, int nbPionBlanc, int nbPionRouge);
 }

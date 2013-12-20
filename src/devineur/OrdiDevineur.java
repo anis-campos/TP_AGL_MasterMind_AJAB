@@ -112,7 +112,7 @@ public class OrdiDevineur implements Devineur
 	 * 
 	 * @see comparer
 	 */
-	public void comparerEnlever(TableauBoule proposition, int nbPionBlanc, int nbPionRouge)
+	public boolean comparerEnlever(TableauBoule proposition, int nbPionBlanc, int nbPionRouge)
 	{
 
 		TableauBoule ligne;
@@ -123,6 +123,7 @@ public class OrdiDevineur implements Devineur
 				i++;
 		}
 		System.out.println("fini");
+		return true;
 	}
 
 	/**
@@ -198,9 +199,11 @@ public class OrdiDevineur implements Devineur
 	 * @see devineur.Devineur#lirePions(jeu.TableauBoule, int, int)
 	 */
 	@Override
-	public void lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge)
+	public boolean lirePions(TableauBoule tabBoule, int nbPionBlanc, int nbPionRouge)
 	{
-		comparerEnlever(tabBoule, nbPionBlanc, nbPionRouge);
+		if (nbPionBlanc<0 || nbPionBlanc>nbBoule || nbPionRouge<0 || nbPionRouge>nbBoule || nbPionRouge+nbPionBlanc>nbBoule)
+			return false;
+		return comparerEnlever(tabBoule, nbPionBlanc, nbPionRouge);
 	}
 
 }
